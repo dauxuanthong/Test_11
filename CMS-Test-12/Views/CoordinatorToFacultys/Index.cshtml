@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CMS_Test_12.Models.CoordinatorToFaculty>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Assign Coordinator to Faculty", "Create")
+@using (Html.BeginForm("Index", "CoordinatorToFacultys", FormMethod.Get))
+{
+	<p>
+		Find by Email: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Coordinator Name</th>
+		<th>Faculty Name</th>
+		<th>Delete</th>
+
+	</tr>
+	@foreach (var item in Model)	
+	{
+		<tr>
+			<th>@item.Id</th>
+			<th>@item.Coordinator.Name</th>
+			<th>@item.Faculty.Name</th>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+		</tr>
+	}
+</table>
+

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CMS_Test_12.Models.Faculty>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.ActionLink("Create a new topic", "Create")
+@using (Html.BeginForm("Index", "Faculties", FormMethod.Get))
+{
+	<p>
+		Find by faculty name: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Delete</th>
+	</tr>
+	@foreach (var faculty in Model)
+	{
+		<tr>
+			<th>@faculty.Id</th>
+			<th>@faculty.Name</th>
+			<th>@faculty.Description</th>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = faculty.Id })</td>
+		</tr>
+	}
+</table>

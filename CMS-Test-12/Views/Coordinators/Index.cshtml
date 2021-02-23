@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CMS_Test_12.Models.MarketingCoordinator>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Add Information", "Create")
+@using (Html.BeginForm("Index", "MarketingCoordinators", FormMethod.Get))
+{
+	<p>
+		Find by faculty name: @Html.TextBox("SearchString")
+		<input type="submit" value="Search" />
+	</p>
+}
+
+<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Email</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<th>@item.Id</th>
+			<th>@item.Name</th>
+			<th>@item.Coordinator.Email</th>
+		</tr>
+	}
+</table>
+

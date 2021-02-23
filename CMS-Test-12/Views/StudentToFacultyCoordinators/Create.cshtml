@@ -1,0 +1,31 @@
+﻿@model CMS_Test_12.ViewModels.StudenttoFacultyCoordinatorViewModel
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Assign Student to Coordinator Faculty</h2>
+
+@using (Html.BeginForm("Create", "StudentToFacultyCoordinators", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.StudentToFacultyCoordinator.ManageStudentId)
+		@Html.DropDownListFor(m => m.StudentToFacultyCoordinator.ManageStudentId,
+			new SelectList(Model.Students, "Id", "Name"),
+			"Select Coordinator",
+			new { @class = "form-control" }
+		)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(m => m.StudentToFacultyCoordinator.Id)
+		@Html.DropDownListFor(m => m.StudentToFacultyCoordinator.CoordinatorToFacultyId,
+			new SelectList(Model.CoordinatorToFaculties, "Id", "Id"),
+			"Select Faculty",
+			new { @class = "form-control" }
+		)
+	</div>
+
+	<button type="submit" class="btn btn-primary">Assign</button>
+}
+
+

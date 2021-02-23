@@ -1,0 +1,18 @@
+﻿@model CMS_Test_12.Models.MarketingCoordinator
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Coordinators", FormMethod.Post))
+{
+	
+	<div class="form-group">
+		@Html.LabelFor(p => p.Name)
+		@Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(p => p.Name, "", new { @class = "text-danger" })
+	</div>
+	<button type="submit" class="btn btn-primary">Create</button>
+}
+	
